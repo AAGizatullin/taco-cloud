@@ -1,15 +1,17 @@
 package tacos.model;
 
+import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+
+
 @Data
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
+@NoArgsConstructor
+
 public class Ingredient {
   @Id
   private String id;
