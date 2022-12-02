@@ -1,8 +1,12 @@
 package tacos.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import tacos.model.TacoOrder;
 
-public interface OrderRepository extends CrudRepository<TacoOrder,Long> {
-  TacoOrder save(TacoOrder order);
+import java.util.UUID;
+
+@Repository
+public interface OrderRepository extends CrudRepository<TacoOrder, UUID> {
+//  TacoOrder save(TacoOrder order);
 }

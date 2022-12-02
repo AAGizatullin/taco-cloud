@@ -18,9 +18,11 @@ import tacos.model.Ingredient;
 import tacos.model.Ingredient.Type;
 import tacos.model.Taco;
 import tacos.model.TacoOrder;
+import tacos.model.TacoUDT;
 import tacos.repository.IngredientRepository;
 
-@Slf4j
+//
+// @Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
@@ -63,13 +65,13 @@ public class DesignTacoController {
   }
   @PostMapping
   public String processTaco(
-      @Valid Taco taco, Errors errors,
-      @ModelAttribute TacoOrder tacoOrder) {
+          @Valid Taco taco, Errors errors,
+          @ModelAttribute TacoOrder tacoOrder) {
     if (errors.hasErrors()){
       return "design";
     }
-    tacoOrder.addTaco(taco);
-    log.info("Processing taco: {}", taco);
+    tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
+    //log.info("Processing taco: {}", taco);
     return "redirect:/orders/current";
   }
 }
